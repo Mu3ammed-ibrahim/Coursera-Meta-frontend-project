@@ -1,0 +1,65 @@
+/* Import fonts */
+@import url("https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400;500;700&family=Karla:wght@400;700;800&display=swap");
+
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base font size - 16px by default */
+html {
+  font-size: 16px;
+}
+
+/* Typography Classes */
+.header-title {
+  font-family: "Markazi Text", serif;
+  color: #F4CE14; /* lemon yellow */
+  font-weight: 700; /* bold */
+  font-size: 4rem; /* 64px */
+}
+
+.header-subtitle {
+  font-family: "Markazi Text", serif;
+  font-weight: 400; /* regular */
+  font-size: 2rem;
+}
+
+.section-title {
+  font-family: "Markazi Text", serif;
+ font-weight: 800   ;
+  font-size: 1.25rem; /* 20px */
+}
+
+.card-title {
+  font-family: "Karla", sans-serif;
+  font-weight: 700; /* bold */
+  font-size: 1.125rem; /* 18px */
+}
+
+.card-text {
+  font-family: "Karla", sans-serif;
+  font-weight: 400; /* regular */
+  font-size: 1rem; /* 16px */
+}
+
+/* Apply typography to specific elements */
+main h2 {
+  font-family: "Karla", sans-serif;
+  font-weight: 800;
+  font-size: 1.25rem;
+}
+
+.card h3 {
+  font-family: "Karla", sans-serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.card p {
+  font-family: "Karla", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}
