@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Logo from "../assets/Logo.svg";
 
 const Nav = () => {
@@ -37,7 +38,7 @@ const Nav = () => {
 
       <ul className={`nav-links ${isMenuOpen ? "active" : ""}`}>
         <li>
-          <a href="#home">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li>
           <a href="#about">About</a>
