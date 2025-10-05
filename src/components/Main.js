@@ -5,7 +5,7 @@ import lemonDessert from "../assets/lemon dessert.jpg";
 import cheifA from "../assets/Mario and Adrian A.jpg";
 import cheifB from "../assets/Mario and Adrian b.jpg";
 
-function Main() {
+function Main({ availableTimes, onDateChange }) {
   return (
     <main>
       {/* Specials Section */}
@@ -46,36 +46,62 @@ function Main() {
       </section>
 
       {/* Testimonials */}
-      <section className="testimonials">
+      <section className="testimonials" aria-label="Customer Testimonials">
         <h2 className="section-title">Testimonials</h2>
         <div className="testimonials-grid">
-          <div className="testimonial">
-            ⭐ ⭐ ⭐ ⭐ ⭐ <p className="card-text">Great food!</p>
-          </div>
-          <div className="testimonial">
-            ⭐ ⭐ ⭐ ⭐ ⭐ <p className="card-text">Excellent service!</p>
-          </div>
-          <div className="testimonial">
-            ⭐ ⭐ ⭐ ⭐ ⭐ <p className="card-text">Loved the ambiance!</p>
-          </div>
+          <article className="testimonial">
+            <div className="rating" aria-label="5 out of 5 stars">
+              ⭐ ⭐ ⭐ ⭐ ⭐
+            </div>
+            <blockquote>
+              <p className="card-text">Great food!</p>
+            </blockquote>
+          </article>
+          <article className="testimonial">
+            <div className="rating" aria-label="5 out of 5 stars">
+              ⭐ ⭐ ⭐ ⭐ ⭐
+            </div>
+            <blockquote>
+              <p className="card-text">Excellent service!</p>
+            </blockquote>
+          </article>
+          <article className="testimonial">
+            <div className="rating" aria-label="5 out of 5 stars">
+              ⭐ ⭐ ⭐ ⭐ ⭐
+            </div>
+            <blockquote>
+              <p className="card-text">Loved the ambiance!</p>
+            </blockquote>
+          </article>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="about">
-        <h2 className="section-title">About</h2>
+      <section id="about" className="about" aria-labelledby="about-heading">
+        <h2 id="about-heading" className="section-title">
+          About
+        </h2>
         <div className="about-grid">
-          <div className="text">
+          <article className="about-content">
             <h3 className="card-title">Little Lemon Chicago</h3>
             <p className="card-text">
               Little Lemon is a family-owned Mediterranean restaurant, offering
               authentic recipes with a modern twist.
             </p>
-          </div>
-          <div className="about-images">
-            <img src={cheifA} alt="Restaurant interior"className="img-top" />
-            <img src={cheifB} alt="Restaurant team" className="img-bottom"/>
-          </div>
+          </article>
+          <figure className="about-images">
+            <img
+              src={cheifA}
+              alt="Chef Mario preparing a delicious meal"
+              className="img-top"
+            />
+            <img
+              src={cheifB}
+              alt="Chef Adrian garnishing a dish"
+              className="img-bottom"
+            />
+            <figcaption>Our talented chefs Mario and Adrian at work</figcaption>
+          </figure>
         </div>
       </section>
     </main>
