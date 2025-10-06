@@ -12,26 +12,38 @@ const Nav = () => {
   return (
     <header className="navbar">
       <div className="nav-container">
-        <div className="nav-left">
-          <button
-            className="hamburger"
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
-            aria-expanded={isMenuOpen}
-            aria-controls="main-menu"
-          >
-            <span className="hamburger-line"></span>
-            <span className="hamburger-line"></span>
-            <span className="hamburger-line"></span>
-          </button>
-        </div>
-
-        <div className="nav-center">
+        {/* Logo - Left side on desktop, center on mobile */}
+        <div className="nav-logo">
           <Link to="/" className="logo-link">
             <img src={Logo} alt="Little Lemon Logo" className="logo" />
           </Link>
         </div>
 
+        {/* Desktop Navigation Links */}
+        <nav className="desktop-nav">
+          <ul className="desktop-nav-links">
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <a href="#about">About</a>
+            </li>
+            <li>
+              <a href="#menu">Menu</a>
+            </li>
+            <li>
+              <a href="#reservations">Reservations</a>
+            </li>
+            <li>
+              <Link to="/order">Order Online</Link>
+            </li>
+            <li>
+              <a href="#login">Login</a>
+            </li>
+          </ul>
+        </nav>
+
+        {/* Right side - Hamburger and Basket */}
         <div className="nav-right">
           <button className="basket-btn" aria-label="Shopping basket">
             <svg
@@ -49,9 +61,22 @@ const Nav = () => {
               0
             </span>
           </button>
+
+          <button
+            className="hamburger"
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+            aria-expanded={isMenuOpen}
+            aria-controls="main-menu"
+          >
+            <span className="hamburger-line"></span>
+            <span className="hamburger-line"></span>
+            <span className="hamburger-line"></span>
+          </button>
         </div>
 
-        <nav className="main-nav">
+        {/* Mobile Navigation Menu */}
+        <nav className="mobile-nav">
           <ul
             id="main-menu"
             className={`nav-links ${isMenuOpen ? "active" : ""}`}
