@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Footer() {
   return (
     <footer className="footer">
@@ -10,7 +12,7 @@ function Footer() {
           <h3>Navigation</h3>
           <ul>
             <li>
-              <a href="#home">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li>
               <a href="#menu">Menu</a>

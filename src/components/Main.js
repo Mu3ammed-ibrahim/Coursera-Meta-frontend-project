@@ -4,6 +4,7 @@ import bruchetta from "../assets/bruchetta.svg";
 import lemonDessert from "../assets/lemon dessert.jpg";
 import cheifA from "../assets/Mario and Adrian A.jpg";
 import cheifB from "../assets/Mario and Adrian b.jpg";
+import CustomersSay from "./CustomersSay";
 
 function Main({ availableTimes, onDateChange }) {
   return (
@@ -45,36 +46,7 @@ function Main({ availableTimes, onDateChange }) {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="testimonials" aria-label="Customer Testimonials">
-        <h2 className="section-title">Testimonials</h2>
-        <div className="testimonials-grid">
-          <article className="testimonial">
-            <div className="rating" aria-label="5 out of 5 stars">
-              ⭐ ⭐ ⭐ ⭐ ⭐
-            </div>
-            <blockquote>
-              <p className="card-text">Great food!</p>
-            </blockquote>
-          </article>
-          <article className="testimonial">
-            <div className="rating" aria-label="5 out of 5 stars">
-              ⭐ ⭐ ⭐ ⭐ ⭐
-            </div>
-            <blockquote>
-              <p className="card-text">Excellent service!</p>
-            </blockquote>
-          </article>
-          <article className="testimonial">
-            <div className="rating" aria-label="5 out of 5 stars">
-              ⭐ ⭐ ⭐ ⭐ ⭐
-            </div>
-            <blockquote>
-              <p className="card-text">Loved the ambiance!</p>
-            </blockquote>
-          </article>
-        </div>
-      </section>
+      <CustomersSay />
 
       {/* About Section */}
       <section id="about" className="about" aria-labelledby="about-heading">
@@ -83,7 +55,8 @@ function Main({ availableTimes, onDateChange }) {
         </h2>
         <div className="about-grid">
           <article className="about-content">
-            <h3 className="card-title">Little Lemon Chicago</h3>
+            <h3>Little Lemon</h3>
+            <h4>Chicago</h4>
             <p className="card-text">
               Little Lemon is a family-owned Mediterranean restaurant, offering
               authentic recipes with a modern twist.
@@ -100,7 +73,6 @@ function Main({ availableTimes, onDateChange }) {
               alt="Chef Adrian garnishing a dish"
               className="img-bottom"
             />
-            <figcaption>Our talented chefs Mario and Adrian at work</figcaption>
           </figure>
         </div>
       </section>

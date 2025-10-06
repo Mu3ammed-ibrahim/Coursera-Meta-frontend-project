@@ -22,9 +22,9 @@ html {
 }
 
 .header-subtitle {
-  font-family: "Markazi Text", serif;
+  font-family: "karla Text", serif;
   font-weight: 400; /* regular */
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .section-title {
@@ -49,7 +49,7 @@ html {
 main h2 {
   font-family: "Karla", sans-serif;
   font-weight: 800;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .card h3 {

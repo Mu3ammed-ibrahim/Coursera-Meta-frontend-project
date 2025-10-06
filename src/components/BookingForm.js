@@ -20,20 +20,32 @@ const BookingForm = ({ availableTimes, onDateChange, submitForm }) => {
       case "date":
         if (!value) {
           error = "Date is required";
-        } else if (new Date(value) < new Date().setHours(0, 0, 0, 0)) {
-          error = "Date cannot be in the past";
+        } else {
+          // Compare only the date parts (no time)
+          const selected = new Date(value);
+          const today = new Date();
+          today.setHours(0, 0, 0, 0);
+          if (selected < today) {
+            error = "Date cannot be in the past";
+          }
         }
         break;
       case "time":
         if (!value) error = "Time is required";
         break;
       case "guests":
-        if (!value) {
+        // Ensure we validate numeric value
+        if (value === "" || value === null || value === undefined) {
           error = "Number of guests is required";
-        } else if (value < 1) {
-          error = "Minimum 1 guest required";
-        } else if (value > 10) {
-          error = "Maximum 10 guests allowed";
+        } else {
+          const num = Number(value);
+          if (Number.isNaN(num)) {
+            error = "Number of guests must be a number";
+          } else if (num < 1) {
+            error = "Minimum 1 guest required";
+          } else if (num > 10) {
+            error = "Maximum 10 guests allowed";
+          }
         }
         break;
       case "occasion":
@@ -52,7 +64,8 @@ const BookingForm = ({ availableTimes, onDateChange, submitForm }) => {
     // Update form data
     setFormData((prevState) => ({
       ...prevState,
-      [name]: value,
+      // parse number input to keep consistent type
+      [name]: name === "guests" ? (value === "" ? "" : Number(value)) : value,
     }));
 
     // If date changes, update available times
@@ -68,9 +81,38 @@ const BookingForm = ({ availableTimes, onDateChange, submitForm }) => {
     }));
   };
 
+  // Track whether a field has been touched (for nicer UX - only show errors after blur)
+  const [touched, setTouched] = useState({});
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    setTouched((prev) => ({ ...prev, [name]: true }));
+    const error = validateField(name, value);
+    setFormErrors((prev) => ({ ...prev, [name]: error }));
+  };
+
+  // Derived overall form validity
+  const isFormValid = () => {
+    // Validate all fields using current formData
+    const errors = {};
+    Object.keys(formData).forEach((key) => {
+      const error = validateField(key, formData[key]);
+      if (error) errors[key] = error;
+    });
+    return Object.keys(errors).length === 0;
+  };
+
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Mark form as submitted (so errors show if present)
+    setSubmitted(true);
+    // Mark all fields as touched
+    const allTouched = {};
+    Object.keys(formData).forEach((k) => (allTouched[k] = true));
+    setTouched(allTouched);
 
     // Validate all fields
     const errors = {};
@@ -79,11 +121,11 @@ const BookingForm = ({ availableTimes, onDateChange, submitForm }) => {
       if (error) errors[key] = error;
     });
 
+    setFormErrors(errors);
+
     if (Object.keys(errors).length === 0) {
       // Form is valid - call the submitForm function passed as prop
       submitForm(formData);
-    } else {
-      setFormErrors(errors);
     }
   };
 
@@ -100,10 +142,12 @@ const BookingForm = ({ availableTimes, onDateChange, submitForm }) => {
             name="date"
             value={formData.date}
             onChange={handleChange}
+            onBlur={handleBlur}
             required
             min={new Date().toISOString().split("T")[0]}
+            aria-invalid={!!formErrors.date}
           />
-          {formErrors.date && (
+          {formErrors.date && (touched.date || submitted) && (
             <span className="error-message">{formErrors.date}</span>
           )}
         </div>
@@ -115,7 +159,9 @@ const BookingForm = ({ availableTimes, onDateChange, submitForm }) => {
             name="time"
             value={formData.time}
             onChange={handleChange}
+            onBlur={handleBlur}
             required
+            aria-invalid={!!formErrors.time}
           >
             <option value="">Select a time</option>
             {availableTimes.map((time) => (
@@ -127,7 +173,7 @@ const BookingForm = ({ availableTimes, onDateChange, submitForm }) => {
               </option>
             ))}
           </select>
-          {formErrors.time && (
+          {formErrors.time && (touched.time || submitted) && (
             <span className="error-message">{formErrors.time}</span>
           )}
         </div>
@@ -140,11 +186,13 @@ const BookingForm = ({ availableTimes, onDateChange, submitForm }) => {
             name="guests"
             value={formData.guests}
             onChange={handleChange}
+            onBlur={handleBlur}
             min="1"
             max="10"
             required
+            aria-invalid={!!formErrors.guests}
           />
-          {formErrors.guests && (
+          {formErrors.guests && (touched.guests || submitted) && (
             <span className="error-message">{formErrors.guests}</span>
           )}
         </div>
@@ -156,17 +204,25 @@ const BookingForm = ({ availableTimes, onDateChange, submitForm }) => {
             name="occasion"
             value={formData.occasion}
             onChange={handleChange}
+            onBlur={handleBlur}
             required
+            aria-invalid={!!formErrors.occasion}
           >
             <option value="Birthday">Birthday</option>
             <option value="Anniversary">Anniversary</option>
           </select>
-          {formErrors.occasion && (
+          {formErrors.occasion && (touched.occasion || submitted) && (
             <span className="error-message">{formErrors.occasion}</span>
           )}
         </div>
 
-        <button type="submit" className="submit-button">
+        <button
+          type="submit"
+          className="submit-button"
+          disabled={!isFormValid()}
+          aria-disabled={!isFormValid()}
+          aria-label="On Click"
+        >
           Reserve Table
         </button>
       </form>

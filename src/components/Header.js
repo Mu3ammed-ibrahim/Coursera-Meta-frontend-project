@@ -1,5 +1,5 @@
 import Image from "../assets/restauranfood.jpg";
-
+import { Link } from "react-router-dom";
 function Header() {
   return (
     <header className="hero">
@@ -10,7 +10,10 @@ function Header() {
           We are a family owned Mediterranean restaurant, focused on traditional
           recipes served with a modern twist.
         </p>
-        <button className="btn">Reserve a Table</button>
+
+        <Link to="/order" role="menuitem">
+          <button className="btn">Reserve a table </button>
+        </Link>
       </div>
       <div className="hero-image">
         <img src={Image} alt="Delicious food" />
