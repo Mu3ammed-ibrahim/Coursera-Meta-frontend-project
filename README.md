@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# Little Lemon Restaurant
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive website for the Little Lemon restaurant, built with React. Features an online reservation system, menu showcase, and about section.
 
-## Available Scripts
+![Little Lemon Restaurant](src/assets/Logo.svg)
 
-In the project directory, you can run:
+## 🚀 Quick Start
 
-### `npm start`
+1. **Install Dependencies**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+   ```bash
+   npm install
+   ```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. **Start Development Server**
+   ```bash
+   npm start
+   ```
+   Then open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### `npm test`
+## 🛠️ Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Online Reservations**: Easy-to-use table booking system
+- **Menu Showcase**: Display of special dishes and menu items
+- **About Section**: Restaurant information and chef introductions
+- **Responsive Design**: Works on all devices (mobile, tablet, desktop)
 
-### `npm run build`
+## 💻 Tech Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- React
+- React Router
+- CSS3 with Grid/Flexbox
+- Modern JavaScript (ES6+)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📱 Screenshots
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The website is fully responsive and works on:
 
-### `npm run eject`
+- 📱 Mobile devices (320px and up)
+- 💻 Tablets (768px and up)
+- 🖥️ Desktops (1024px and up)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## ✨ Development
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Available Scripts
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- `npm start` - Runs development server
+- `npm test` - Runs test suite
+- `npm run build` - Creates production build
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Project Structure
 
-## Learn More
+```
+src/
+  ├── components/    # React components
+  ├── assets/       # Images and static files
+  ├── App.js        # Main app component
+  └── index.js      # Entry point
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🧪 Testing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Run the test suite:
 
-### Code Splitting
+```bash
+npm test
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 📝 License
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is part of the Meta Frontend Developer course.
